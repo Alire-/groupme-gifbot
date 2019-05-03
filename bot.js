@@ -12,6 +12,12 @@ function respond() {
     requestLink(searchTerm);
     this.res.end();
   }
+  if (trigger == 'mark' && request.name != 'gifbot') {
+    searchTerm = request.text.substr(3);
+    this.res.writeHead(200);
+    postMessage("*m0rk", botID, size)
+    this.res.end();
+  }
 }
 
 function requestLink(searchTerm) {
