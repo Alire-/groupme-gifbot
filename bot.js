@@ -1,6 +1,7 @@
 var HTTPS = require('https');
 var request = require('request');
 var botID = process.env.BOT_ID;
+var giphyKey = process.env.GIPHY_KEY;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
@@ -21,7 +22,7 @@ function respond() {
 }
 
 function requestLink(searchTerm) {
-  request('http://api.giphy.com/v1/gifs/translate?s=' + searchTerm + '&api_key=dc6zaTOxFJmzC&rating=r', function (error, response, body) {
+  request('http://api.giphy.com/v1/gifs/translate?s=' + searchTerm + '&api_key=' + giphyKey + '&rating=r', function (error, response, body) {
   if (!error && response.statusCode == 200) {
     parsedData = JSON.parse(body),
     postMessage(parsedData.data.images.downsized.url, botID, parsedData.data.images.downsized.size);
