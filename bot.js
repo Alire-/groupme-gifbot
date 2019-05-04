@@ -5,18 +5,17 @@ var giphyKey = process.env.GIPHY_KEY;
 
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
-  trigger = request.text.substring(0,2);
+  trigger = request.text;
   
-  if (trigger == '/g' && request.name != 'gifbot') {
+  if (trigger.includes('/g') && request.name != 'gifbot') {
     searchTerm = request.text.substr(3);
     this.res.writeHead(200);
     requestLink(searchTerm);
     this.res.end();
-  };
-  if (trigger == '/f' && request.name != 'gifbot') {
-    searchTerm = request.text.substr(3);
+  }
+  else if (trigger.includes('mark') && request.name != 'gifbot') {
     this.res.writeHead(200);
-    postMessage("Fuck you guys.", botID, size)
+    postMessage("*m0rk", botID, size)
     this.res.end();
   }
 }
