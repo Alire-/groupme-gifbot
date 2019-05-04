@@ -28,7 +28,7 @@ function requestLink(searchTerm) {
     postMessage(parsedData.data.images.downsized.url, botID, parsedData.data.images.downsized.size);
     } 
   }); 
-} 
+}  
 
 function postMessage(botResponse, botID, size) {
   var options, body, botReq;
