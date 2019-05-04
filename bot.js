@@ -12,7 +12,7 @@ function respond() {
     this.res.writeHead(200);
     requestLink(searchTerm);
     this.res.end();
-  }
+  };
   if (trigger == 'mark' && request.name != 'gifbot') {
     searchTerm = request.text.substr(3);
     this.res.writeHead(200);
